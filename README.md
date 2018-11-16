@@ -10,7 +10,8 @@ This API can be imported with `import proj;`. An example program using this API 
 in [examples/proj_example.d](examples/proj_example.d).
 
 The second API uses some of the feature of D to make using the library easier. It is imported with
-`import crs;`. The central object is the `Projection` class. It is constructed either with a
+`import crs;`. An example of using this API is at [examples/crs_example.d](examples/crs_example.d).
+The central object is the `Projection` class. It is constructed either with a
 string like with the `proj_create` function, or with an associative array of strings indexed
 with members of the `PK` enum. The second style of construction will feel familiar to those who have
 used Python interfaces to PROJ like cartopy or basemap. There are many subclasses of `Projection`
