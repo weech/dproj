@@ -1,13 +1,13 @@
 ## A D binding for PROJ
 This library offers D bindings for the venerable PROJ library. PROJ provides easy-to-use
 cartographic transformations. Details about the PROJ project can be found at
-[PROJ4.org](https://PROJ4.org/). This binding is for PROJ version 5.2 and uses the new PROJ.h
+[PROJ4.org](https://PROJ4.org/). This binding is for PROJ version 5.2 and uses the new proj.h
 header file.
 
 This packages offers two APIs. The first is a translation of the PROJ.h header file, and
 documentation can be found [here](https://PROJ4.org/development/reference/functions.html).
 This API can be imported with `import proj;`. An example program using this API can be found
-in examples/PROJ_example.d.
+in [examples/proj_example.d](examples/proj_example.d).
 
 The second API uses some of the feature of D to make using the library easier. It is imported with
 `import crs;`. The central object is the `Projection` class. It is constructed either with a
