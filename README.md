@@ -31,6 +31,6 @@ environment's `lib` to your `LD_LIBRARY_PATH` environment variable so your linke
 and your conda environment's `lib/pkgconfig` to your `PKG_CONFIG_PATH` environment variable
 so dub can find it.
 
-For now you can install these bindings with a `git clone https://www.github.com/weech/dproj` and
+For now you can install these bindings with a `git clone https://www.github.com/weech/dproj.git` and
 `dub add-local dproj`. Eventually I'll register this.
 
