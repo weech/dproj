@@ -1,0 +1,13 @@
+{
+	"description": "proj bindings for D",
+	"license": "MIT",
+	"authors": [
+		"Alex Weech"
+	],
+	"copyright": "Copyright © 2018, Alex Weech",
+	"name": "proj",
+	"libs": ["proj"],
+	"homepage": "https://github.com/weech/dproj",
+	"targetType": "library",
+	"version": "0.1.0"
+}
