@@ -185,17 +185,33 @@ alias PJ_CONTEXT = projCtx_t;
 PJ_CONTEXT* proj_context_create() @nogc nothrow ;
 PJ_CONTEXT* proj_context_destroy(PJ_CONTEXT* ctx) @nogc nothrow ;
 
+/** Callback to resolve a filename to a full path */
+alias proj_file_finder = char* function(PJ_CONTEXT*, const char*, void*) @nogc nothrow ;
+
+void proj_context_set_file_finder(PJ_CONTEXT* ctx, proj_file_finder finder, void* user_data);
+void proj_context_set_search_paths(PJ_CONTEXT* cts, int count_paths, char** paths);
+
+void proj_context_use_proj4_init_rules(PJ_CONTEXT* ctx, int enable) @nogc nothrow ;
+int proj_context_get_use_proj4_init_rules(PJ_CONTEXT* ctx, int from_legacy_code_path) @nogc nothrow ;
+
 /* Manage the transformation definition object PJ */
 PJ* proj_create(PJ_CONTEXT* ctx, const char* definition) @nogc nothrow ;
-PJ* proj_create_argv(PJ_CONTEXT* ctx, int argc, char** argv)@nogc nothrow ;
+PJ* proj_create_argv(PJ_CONTEXT* ctx, int argc, char** argv) @nogc nothrow ;
 PJ* proj_create_crs_to_crs(PJ_CONTEXT* ctx, const char* srid_from, const char* srid_to, PJ_AREA* area) @nogc nothrow ;
+PJ* proj_normalize_for_visualization(PJ_CONTEXT* ctx, const char* source_crs,
+                                     const char* target_crs, PJ_AREA* area) @nogc nothrow ;
 PJ* proj_destroy(PJ* P) @nogc nothrow ;
+
+PJ_AREA* proj_area_create() @nogc nothrow ;
+void proj_area_set_bbox(PJ_AREA* area, double west_lon_degree, double south_lat_degree,
+                        double east_lon_degree, double north_lat_degree) @nogc nothrow ;
+void proj_area_destroy(PJ_AREA* area);
 
 int proj_angular_input(PJ* P, PJ_DIRECTION dir) @nogc nothrow ;
 int proj_angular_output(PJ* P, PJ_DIRECTION dir) @nogc nothrow ;
 
 PJ_COORD proj_trans(PJ* P, PJ_DIRECTION direction, PJ_COORD coord) @nogc nothrow ;
-int proj_trans_array(PJ* P, PJ_DIRECTION direction, size_t n, PJ_COORD* coord)@nogc nothrow ;
+int proj_trans_array(PJ* P, PJ_DIRECTION direction, size_t n, PJ_COORD* coord) @nogc nothrow ;
 
 size_t proj_trans_generic (
     PJ* P,
@@ -254,6 +270,7 @@ PJ_INIT_INFO proj_init_info(const char* initname) @nogc nothrow ;
 const(PJ_OPERATIONS)* proj_list_operations() @nogc nothrow ;
 const(PJ_ELLPS)* proj_list_ellps() @nogc nothrow ;
 const(PJ_UNITS)* proj_list_units() @nogc nothrow ;
+const(PJ_UNITS)* proj_list_angular_units() @nogc nothrow ;
 const(PJ_PRIME_MERIDIANS)* proj_list_prime_meridians() @nogc nothrow ;
 
 /* These are trivial, and while occasionally useful in real code, primarily here to      */

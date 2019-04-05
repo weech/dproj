@@ -13,3 +13,5 @@ dproj-test-*
 *.obj
 *.lst
 libdproj.a
+libproj.a
+dub.selections.json
